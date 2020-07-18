@@ -19,6 +19,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @EnableTransactionManagement
 public class DBConfig {
+	//com
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
 		HikariConfig config = new HikariConfig();
