@@ -66,14 +66,15 @@ public class EmployeeController {
 			responseDto.setMsgId("1");
 			return responseDto;
 		}
-		HttpHeaders headers = new HttpHeaders();
-		RestTemplate restTemplate = new RestTemplate();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		headers.set("key", "8976264058");
-		HttpEntity<RequestDto> entity = new HttpEntity<RequestDto>(requestDto, headers);
-		ResponseEntity<ResponseDto> responseEntity = restTemplate
-				.exchange("http://localhost:8001/employee/saveEmployee", HttpMethod.POST, entity, ResponseDto.class);
-		System.out.println("Rest Template Response [" + responseEntity.getBody().toString() + "]");
+//		HttpHeaders headers = new HttpHeaders();
+//		RestTemplate restTemplate = new RestTemplate();
+//		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+//		headers.set("key", "8976264058");
+//		HttpEntity<RequestDto> entity = new HttpEntity<RequestDto>(requestDto, headers);
+//		ResponseEntity<ResponseDto> responseEntity = restTemplate
+//				.exchange("http://localhost:8001/employee/saveEmployee", HttpMethod.POST, entity, ResponseDto.class);
+//		System.out.println("Rest Template Response [" + responseEntity.getBody().toString() + "]");
+//		
 		return responseDto;
 	}
 
