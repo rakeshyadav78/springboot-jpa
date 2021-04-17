@@ -1,5 +1,6 @@
 package com.jdbc.test.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 	@Query(value = "select * from empployee where id_emp=?1", nativeQuery = true)
 	Optional<Employee> getById(int id);
+
+	@Query(value = "select * from empployee", nativeQuery = true)
+	List<Employee> getAllEmployee();
 }

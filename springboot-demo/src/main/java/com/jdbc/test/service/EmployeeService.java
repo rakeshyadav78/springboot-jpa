@@ -1,13 +1,13 @@
 package com.jdbc.test.service;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jdbc.test.dto.RequestDto;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jdbc.test.entity.Employee;
 import com.jdbc.test.repository.EmployeeRepository;
 
@@ -18,23 +18,23 @@ public class EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	public Employee saveEmployee(RequestDto requestDto) {
-		return employeeRepository.save(requestDto.getEmployee());
-	}
-
-	public Employee getEmployee(int id) {
-		Optional<Employee> employee = null;
+	public Employee saveEmp(Employee employee) {
+		
 		Employee employee2 = null;
 		try {
-			employee = employeeRepository.getById(id);
-			if (employee.isPresent()) {
-				employee2 = employee.get();
-				return employee2;
-			} else {
-				return null;
-			}
+			log.debug("employee "+new ObjectMapper().writeValueAsString(employee));
+			employee2 = employeeRepository.save(employee);
+			log.debug("Return Success");
+			log.debug("employee2 [" + new ObjectMapper().writeValueAsString(employee2) + "]");
+
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return null;
+		return employee2;
+	}
+	
+	public List<Employee> getAllEmp(){
+		List<Employee> employees=employeeRepository.getAllEmployee();
+		return employees;
 	}
 }
